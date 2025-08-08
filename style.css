@@ -1,0 +1,219 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #ffffff;
+    color: #000;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: #ffffff;
+    border-bottom: solid 1px #eee;
+}
+
+header nav a {
+    text-decoration: none;
+    color: #000;
+    margin: 0 15px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #2B3790;
+}
+
+nav {
+    display: flex;
+    gap: 30px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+    max-width: 1200px;
+}
+
+.logo {
+    height: 50px;
+    border-radius: 10px;
+}
+
+.auth-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.auth-section span {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.auth-section span i {
+    color: #2B3790;
+}
+
+.auth-section a {
+    text-decoration: none;
+    color: #2B3790;
+    font-weight: 500;
+    padding: 6px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.auth-section a:hover {
+    background-color: #f2f2f2;
+    border-color: #bbb;
+}
+
+.hero-image img {
+    height: 80px;
+    border-radius: 10px;
+}
+
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 60px 80px;
+  background: linear-gradient(to bottom right, #002f9d, #0066ff);
+  color: #fff;
+  gap: 40px;
+}
+
+.hero-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.hero-left h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.hero-left p {
+  font-size: 1.2rem;
+  color: #d0dfff;
+}
+
+.matchup {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.matchup img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.vs-badge {
+    margin-top: 15px;
+    font-size: xx-large;
+}
+
+.subscribe-btn {
+  display: inline-block;
+  padding: 14px 28px;
+  background: orange;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.subscribe-btn:hover {
+  background: #ff7a00;
+}
+
+.hero-right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.hero-right img {
+  max-width: 100%;
+  border-radius: 16px;
+  object-fit: cover;
+  height: auto;
+}
+
+.fixture-section {
+    text-align: center;
+    padding: 60px 20px;
+    background: #fefefe;
+    color: #1a1a1a;
+}
+
+.fixture-section h2 {
+    font-size: 1.8rem;
+    color: #002f9d;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.fixture-section p {
+    color: #444;
+    margin-bottom: 20px;
+}
+
+.fixture-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 20px;
+  background: linear-gradient(#94c2fd, #ffffff);
+  border-radius: 12px;
+}
+
+
+/* .fixture-card {
+    background: linear-gradient(to right, #f8fbff, #fffaf5);
+    padding: 30px;
+    border: 1px solid #e0eaff
+    border-radius: 10px;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+} */
+
+.fixture-card img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+.fixture-card .vs {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #444;
+}
+
+.fixture-card .kickoff {
+  background: #f4f9ff;
+  border: 1px solid #d0e4ff;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: 500;
+  color: #004ab3;
+}
