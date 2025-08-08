@@ -19,10 +19,10 @@
 
             <img class="logo" src="img/AVATA-GreFC.png" alt="logo of Gre FC">
             <nav>
-                <a href="index.html">New</a>
-                <a href="#">Player</a>
-                <a href="#">Club</a>
-                <a href="#">More</a>
+                <a href="index.php">New</a>
+                <a href="players.php">Player</a>
+                <a href="club.php">Club</a>
+                <a href="more.php">More</a>
             </nav>
         </div>
         <!-- close container -->
