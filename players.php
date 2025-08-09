@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,8 +11,9 @@
     <link rel="icon" href="img/AVATA-GreFC.png">
     <link rel="stylesheet" href="style.css?v=2">
 </head>
+
 <body>
-        <header>
+    <header>
 
         <div class="container">
 
@@ -35,10 +37,70 @@
     </header>
 
 
-    
+
 </body>
-    <section class="hero-player">
-        <h1>MEET THE SQUAD</h1>
-        <p>Get to know our's talented players</p>
-    </section>
+
+<section class="hero-player">
+    <h1>MEET THE SQUAD</h1>
+    <p>Get to know our's talented players</p>
+</section>
+
+
+<section class="player-wrap">
+    <div class="filter-bar">
+        <h3> <i class="fa-solid fa-sort"></i> Filter by position</h3>
+        <div class="filter-button">
+            <button class="filter-btn active" data-position="All">All players</button>
+            <button class="filter-btn" data-position="Defender" >Defender</button>
+            <button class="filter-btn"data-position="Midfielder">Midfielder</button>
+            <button class="filter-btn"data-position="Attacker">Attacker</button>
+            <button class="filter-btn"data-position="Goalkeeper">Goalkeeper</button>
+        </div>
+
+    
+    <div class="player-grid">
+        <div class="player-card">
+            <div class="player-image">
+                <img src="PlayerImage/Quan.jpg" alt="Le Minh Quan">
+                <span class="player-number"> 12 </span>
+            </div>
+
+            <div class="player-infor">
+                <H4>Le Minh Quan</H4>
+                <p class="position" >Defender</p>
+                <p> age <strong>20</strong> </p>
+                <p> role <strong>president</strong> </p>
+                <hr>
+                <h5>Joined Club</h5>
+                <div class="stats">
+                <div><span>2023</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="player-card">
+            <div class="player-image">
+                <img src="PlayerImage/Pho.jpg" alt="Nguyen Huu Hoang Pho">
+                <span class="player-number"> 19 </span>
+            </div>
+
+            <div class="player-infor">
+                <H4>Nguyen Huu Hoang Pho</H4>
+                <p class="position" >Midfielder</p>
+                <p> age <strong>20</strong> </p>
+                <p> role <strong> vice president</strong> </p>
+                <hr>
+                <h5>Joined Club</h5>
+                <div class="stats">
+                <div><span>2023</span></div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    </div>
+    <!--close filter -->
+</section>
+
 </html>
