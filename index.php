@@ -9,7 +9,7 @@
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="icon" href="img/AVATA-GreFC.png">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=2">
 </head>
 
 <body>
@@ -19,10 +19,10 @@
 
             <img class="logo" src="img/AVATA-GreFC.png" alt="logo of Gre FC">
             <nav>
-                <a href="/navbar/index.php">New</a>
-                <a href="/navbar/players.php">Player</a>
-                <a href="/navbar/club.php">Club</a>
-                <a href="/navbar/more.php">More</a>
+                <a href="index.php">New</a>
+                <a href="players.php">Player</a>
+                <a href="club.php">Club</a>
+                <a href="more.php">More</a>
             </nav>
         </div>
         <!-- close container -->
