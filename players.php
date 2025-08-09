@@ -37,4 +37,8 @@
 
     
 </body>
+    <section class="hero-player">
+        <h1>MEET THE SQUAD</h1>
+        <p>Get to know our's talented players</p>
+    </section>
 </html>

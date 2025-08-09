@@ -285,3 +285,13 @@ footer p {
     display: block;
     margin: 0 auto;
 }
+
+.hero-player {
+  display: block;
+  align-items: center;
+  text-align: center;
+  padding: 60px 80px;
+  background: linear-gradient(to bottom right, #002f9d, #0066ff);
+  color: #fff;
+  gap: 40px;
+}
