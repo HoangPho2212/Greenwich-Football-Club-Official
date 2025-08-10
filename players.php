@@ -103,4 +103,22 @@
     <!--close filter -->
 </section>
 
+<section class="hero-player">
+    <h1>SUPPORT THE TEAM</h1>
+    <p>Come and cheer on GreFC at our next match. Your support makes all the difference!</p>
+    <div class="support-btn" >
+    <a href="index.php" class="next-fix-btn" > <strong> OUR'S NEXT FIXTURE </strong></a>
+    <a href="https://www.facebook.com/Grefc?locale=vi_VN" class="follow-btn" > <strong> FOLLOW US </strong></a>
+    </div>
+</section>
+
+ <footer style="padding-top: 0;" >
+        <div class="footer-bottom">
+            <img class="footer-logo" src="img/AVATA-GreFC.png" alt="logo of Gre FC"> 
+            <p>Greenwich Football Club Da Nang</p>
+            <p>© 2025 GreFC. All rights reserved.</p>
+            <p>Developed by <a href="https://github.com/HoangPho2212">Hoang Pho</a></p>
+        </div>
+    </footer>
+
 </html>

@@ -75,7 +75,7 @@
     <!-- Footer -->
     <footer>
         <h2>JOIN THE GRE FC FAMILY</h2>
-        <p>Experience university football at its finest. Follow GreFC's journey through the Unity Cup and beyond.</p>
+        <p>Experience university football at its finest. Follow GreFC's journey and beyond.</p>
 
         <div class="footer-bottom">
             <img class="footer-logo" src="img/AVATA-GreFC.png" alt="logo of Gre FC"> 

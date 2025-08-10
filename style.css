@@ -401,3 +401,41 @@ footer p {
   font-weight: bold;
   text-align: center;
 }
+
+.next-fix-btn {
+  text-decoration: none;
+  padding: 20px 40px;
+  border-radius: 15px;
+  border-color: #fff;
+  color: #fff;
+  background: #065de0;
+  transition: 0.4s ease;
+  border:  0.5px solid;
+}
+
+.next-fix-btn:hover {
+  background: #fff;
+  color: #002f9d;
+}
+
+.follow-btn {
+  text-decoration: none;
+  color: #fff;
+  background: #FF6900;
+  padding: 20px 40px;
+  border-radius: 15px;
+  border: none;
+  transition: 0.3s ease;
+}
+
+.follow-btn:hover {
+  background: #F54900;
+}
+
+.support-btn {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 50px;
+  gap: 15px;
+}
