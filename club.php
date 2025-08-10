@@ -34,30 +34,30 @@
 
     <section class="club-section">
         <div class="club-container">
-            <img src="/img/AVATA-GreFC.png" alt="logo of Gre FC">
+            <img class="club-logo" src="img/AVATA-GreFC.png" alt="logo of Gre FC">
             <h1>GRE FC</h1>
             <h3>University of Greenwich Foothball Club</h3>
             <p>Established in 2018, GreFC represents the spirit and excellence of the University of Greenwich
              in competitive football while building a strong community of student athletes.
             </p>
 
-            <div class="club-starts">
+            <div class="club-stats">
                 <div class="stat-card">
-                    <i class="fa-regular fa-calendar"></i>
+                    <i style="color: orange;" class="fa-regular fa-calendar"></i>
                     <h4>2018</h4>
                     <span>Founded</span>
                 </div>
 
                 <div class="stat-card">
-                    <i class="fa-solid fa-users"></i>
+                    <i style="color: #05DF72" class="fa-solid fa-users"></i>
                     <h4>30+</h4>
                     <span>members</span>
                 </div>
 
                 <div class="stat-card">
-                    <i class="fa-solid fa-location-dot"></i>
+                    <i style="color: #C27AFF;" class="fa-solid fa-location-dot"></i>
                     <h4>Da Nang</h4>
-                    <span>Base</span>
+                    <span>Based</span>
                 </div>
             </div>
         </div>
