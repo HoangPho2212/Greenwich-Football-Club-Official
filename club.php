@@ -86,6 +86,39 @@
             <img src="img/clbstory.jpg" alt="clb picture">
         </div>
     </section>
+
+    <section class="value-section">
+        <div class="value-container">
+            <h1>Our Values</h1>
+            <p>These core values define who we are and guide everything we do as a club.</p>
+
+            <div class="value-stats">
+                <div class="value-card">
+                    <i class="fa-solid fa-bullseye"></i>
+                    <h4>Excellence</h4>
+                    <p>Striving for the highest standards in everything we do, on and off the pitch.</p>
+                </div>
+
+                <div class="value-card">
+                    <i class="fa-solid fa-user-plus"></i>
+                    <h4>Inclusivity</h4>
+                    <p>Welcoming players of all backgrounds and skill levels into our football family.</p>
+                </div>
+
+                <div class="value-card">
+                    <i class="fa-solid fa-heart-pulse"></i>
+                    <h4>Community</h4>
+                    <p>Building strong bonds that extend beyond football and last a lifetime.</p>
+                </div>
+
+                <div class="value-card">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <h4>Integrity</h4>
+                    <p>Playing with honor, respect, and sportsmanship in every match and interaction.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 </body>
 
 </html>
