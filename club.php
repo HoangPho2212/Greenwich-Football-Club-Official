@@ -93,26 +93,26 @@
             <p>These core values define who we are and guide everything we do as a club.</p>
 
             <div class="value-stats">
-                <div class="value-card">
-                    <i class="fa-solid fa-bullseye"></i>
+                <div style="background: #EFF6FF" class="value-card">
+                    <i style="color: #2087FF;" class="fa-solid fa-bullseye"></i>
                     <h4>Excellence</h4>
                     <p>Striving for the highest standards in everything we do, on and off the pitch.</p>
                 </div>
 
-                <div class="value-card">
-                    <i class="fa-solid fa-user-plus"></i>
+                <div style="background: #F0FDF4;" class="value-card">
+                    <i style="color: #00C65B;" class="fa-solid fa-user-plus"></i>
                     <h4>Inclusivity</h4>
                     <p>Welcoming players of all backgrounds and skill levels into our football family.</p>
                 </div>
 
-                <div class="value-card">
-                    <i class="fa-solid fa-heart-pulse"></i>
+                <div style="background: #FFF7ED;" class="value-card">
+                    <i style="color: #FF5212;" class="fa-solid fa-heart-pulse"></i>
                     <h4>Community</h4>
                     <p>Building strong bonds that extend beyond football and last a lifetime.</p>
                 </div>
 
-                <div class="value-card">
-                    <i class="fa-solid fa-shield-halved"></i>
+                <div style="background: #FAF5FF;" class="value-card">
+                    <i style="color: #B849F6;" class="fa-solid fa-shield-halved"></i>
                     <h4>Integrity</h4>
                     <p>Playing with honor, respect, and sportsmanship in every match and interaction.</p>
                 </div>
