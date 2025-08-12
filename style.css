@@ -521,10 +521,10 @@ footer p {
   border-radius: 16px;
   object-fit: cover;
   height: auto;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
-.value-section{
+.value-section {
   text-align: center;
   padding: 20px 40px;
   background: #fff;
@@ -566,7 +566,7 @@ footer p {
 
 .value-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
 .our-achievements {
@@ -576,7 +576,7 @@ footer p {
 }
 
 .our-achievements h1 {
-  color:  #002f9d;
+  color: #002f9d;
   font-weight: bold;
   margin-bottom: 10px;
 }
@@ -605,7 +605,7 @@ footer p {
 
 .achievement-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 18px rgba(0,0,0,0.1);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
 }
 
 .achievement-card i {
@@ -629,4 +629,50 @@ footer p {
   margin: 5px 0;
   font-weight: bold;
   color: #002f9d;
+}
+
+.club-info {
+  background: linear-gradient(to right,
+      #002f9d, #6b2cff);
+  ;
+  color: #fff;
+  padding: 60px 20px;
+}
+
+.info-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 300px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.info-column h2 {
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.info-card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 15px 20px;
+  margin-bottom: 15px;
+  transition: background 0.3s ease;
+}
+
+.info-card:hover {
+  background: rgba(255, 255, 255, 0.15);
+  ;
+}
+
+.info-card strong {
+  display: block;
+  font-size: 0.95rem;
+  margin-bottom: 5px;
+}
+
+.info-card p {
+  font-size: 0.9rem;
+  color: #e0e0e0;
+  margin: 0;
 }
