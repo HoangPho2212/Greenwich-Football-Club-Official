@@ -119,6 +119,44 @@
             </div>
         </div>
     </section>
+
+    <section class="our-achievements">
+        <div class="achievements-container">
+            <h1>Our Achievements</h1>
+            <p>Celebrating our journey of success and recognition in university football.</p>
+
+            <div class="achievement-grid">
+                <div class="achievement-card">
+                    <i style="color:  #FF9800;" class="fa-solid fa-trophy"></i>
+                    <span class="year">2025</span>
+                    <h4>Greenwich Sportday Champions</h4>
+                    <p>A four-team tournament was organized for students from Greenwich Vietnam and Greenwich UK.</p>
+                </div>
+
+                <div class="achievement-card">
+                    <i style="color: #00B5C7;" class="fa-solid fa-star"></i>
+                    <span class="year">2024</span>
+                    <h4>University of Greenwich's Honor Club in Winter semester </h4>
+                    <p>Awarded by University of Greenwich</p>
+                </div>
+
+                <div class="achievement-card">
+                    <i style="color: #00B5C7;" class="fa-solid fa-star"></i>
+                    <span class="year">2025</span>
+                    <h4>University of Greenwich's Honor Club in Spring and Summer semester</h4>
+                    <p>Awarded by University of Greenwich</p>
+                </div>
+
+                <div class="achievement-card">
+                    <i style="color: #FB4D78;" class="fa-brands fa-gratipay"></i>
+                    <span class="year">2024</span>
+                    <h4>Successfully organized many charity tournaments.</h4>
+                    <p>for local community involvement</p>
+                </div>
+            </div>
+        </div>
+
+    </section>
 </body>
 
 </html>
