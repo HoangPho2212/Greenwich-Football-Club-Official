@@ -169,39 +169,39 @@
                 </div>
                 <div class="info-card">
                     <strong>Founded</strong>
-                    <p>September 2018</p>
-                </div>
-                <div class="info-card">
-                    <strong>League</strong>
-                    <p>University Football League (Division 1)</p>
+                    <p>October 2018</p>
                 </div>
                 <div class="info-card">
                     <strong>Home Ground</strong>
-                    <p>University of Greenwich Sports Ground</p>
+                    <p>FPT football field in FPT software campus</p>
                 </div>
             </div>
-
             <div class="info-column">
                 <h2>Get In Touch</h2>
                 <div class="info-card">
                     <strong>Club Email</strong>
-                    <p>grefc@greenwich.ac.uk</p>
-                </div>
-                <div class="info-card">
-                    <strong>Club Secretary</strong>
-                    <p>secretary.grefc@greenwich.ac.uk</p>
+                    <p>grefc.dn@gmail.com</p>
                 </div>
                 <div class="info-card">
                     <strong>Training Times</strong>
-                    <p>Tuesday & Thursday 6:00 PM - 8:00 PM</p>
+                    <p>Every Thursday 7:30 PM - 8:03PM</p>
                 </div>
                 <div class="info-card">
                     <strong>Address</strong>
-                    <p>Old Royal Naval College, Greenwich, London SE10 9LS</p>
+                    <p>658 Ng. Quyền, An Hải Bắc, Sơn Trà, Đà Nẵng</p>
                 </div>
             </div>
         </div>
     </section>
+
+    <footer style="padding-top: 0;">
+        <div class="footer-bottom">
+            <img class="footer-logo" src="img/AVATA-GreFC.png" alt="logo of Gre FC">
+            <p>Greenwich Football Club Da Nang</p>
+            <p>© 2025 GreFC. All rights reserved.</p>
+            <p>Developed by <i class="fa-brands fa-github"></i> <a href="https://github.com/HoangPho2212">Hoang Pho</a></p>
+        </div>
+    </footer>
 
 </body>
 
