@@ -157,6 +157,52 @@
         </div>
 
     </section>
+
+    <!-- Official Info Section -->
+    <section class="club-info">
+        <div class="info-container">
+            <div class="info-column">
+                <h2>Official Information</h2>
+                <div class="info-card">
+                    <strong>Full Club Name</strong>
+                    <p>University of Greenwich Football Club</p>
+                </div>
+                <div class="info-card">
+                    <strong>Founded</strong>
+                    <p>September 2018</p>
+                </div>
+                <div class="info-card">
+                    <strong>League</strong>
+                    <p>University Football League (Division 1)</p>
+                </div>
+                <div class="info-card">
+                    <strong>Home Ground</strong>
+                    <p>University of Greenwich Sports Ground</p>
+                </div>
+            </div>
+
+            <div class="info-column">
+                <h2>Get In Touch</h2>
+                <div class="info-card">
+                    <strong>Club Email</strong>
+                    <p>grefc@greenwich.ac.uk</p>
+                </div>
+                <div class="info-card">
+                    <strong>Club Secretary</strong>
+                    <p>secretary.grefc@greenwich.ac.uk</p>
+                </div>
+                <div class="info-card">
+                    <strong>Training Times</strong>
+                    <p>Tuesday & Thursday 6:00 PM - 8:00 PM</p>
+                </div>
+                <div class="info-card">
+                    <strong>Address</strong>
+                    <p>Old Royal Naval College, Greenwich, London SE10 9LS</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
 </body>
 
 </html>
