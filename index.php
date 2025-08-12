@@ -81,7 +81,7 @@
             <img class="footer-logo" src="img/AVATA-GreFC.png" alt="logo of Gre FC"> 
             <p>Greenwich Football Club Da Nang</p>
             <p>© 2025 GreFC. All rights reserved.</p>
-            <p>Developed by <a href="https://github.com/HoangPho2212">Hoang Pho</a></p>
+            <p>Developed by <i class="fa-brands fa-github"></i> <a href="https://github.com/HoangPho2212">Hoang Pho</a></p>
         </div>
     </footer>
 
