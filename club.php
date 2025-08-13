@@ -184,7 +184,7 @@
                 </div>
                 <div class="info-card">
                     <strong>Training Times</strong>
-                    <p>Every Thursday 7:30 PM - 8:03PM</p>
+                    <p>Every Thursday 7:30 PM - 8:30PM</p>
                 </div>
                 <div class="info-card">
                     <strong>Address</strong>
