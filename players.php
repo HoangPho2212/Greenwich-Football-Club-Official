@@ -22,7 +22,7 @@
                 <a href="index.php">New</a>
                 <a href="players.php">Player</a>
                 <a href="club.php">Club</a>
-                <a href="more.php">More</a>
+                <!-- <a href="more.php">More</a> -->
             </nav>
         </div>
         <!-- close container -->
