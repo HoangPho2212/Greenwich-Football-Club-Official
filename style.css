@@ -676,3 +676,70 @@ footer p {
   color: #e0e0e0;
   margin: 0;
 }
+
+.subtitle {
+  color: #6b7280;
+  margin-bottom: 20px;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+.tab-label {
+  padding: 8px 0;
+  cursor: pointer;
+  color: #6b7280;
+  font-weight: 500;
+  margin-left: 30px;
+}
+
+input[type="radio"]:checked + .tab-label {
+  color: #2563eb;
+  border-bottom: 2px solid #2563eb;
+}
+
+/* hide as default */
+.tab-content {
+  display: none;
+  margin-top: 40px;
+}
+
+#tab1:checked ~ .tab-container #content1,
+#tab2:checked ~ .tab-container #content2,
+#tab3:checked ~ .tab-container #content3 {
+  display: block;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.section-header h2 {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.add-btn {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 14px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  margin-right: 30px;
+}
+
+.update-card {
+  margin-top: 15px;
+  padding: 20px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #fff;
+  text-align: center;
+  color: #6b7280;
+}
