@@ -39,16 +39,12 @@
     <!-- Hero-section -->
     <section class="hero">
         <div class="hero-left">
-            <h1>Gre FC vs King's College</h1>
-            <p>On 8/8/2025 this Friday</p>
+            <h1>WE ARE HONOR CLUB FROM UNIVERSITY OF GREENWICH</h1>
+            <p>it's our two in arows achieving this label</label></p>
         </div>
 
         <div class="matchup">
             <img src="img/AVATA-GreFC.png" alt="Gre FC">
-            <span class="vs-badge"> <i class="fa-solid fa-hand-fist">
-                </i> <br> VS
-            </span>
-            <img src="img/KingFC.png" alt="opponent logo">
         </div>
 
         <div class="hero-right">
