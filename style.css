@@ -743,3 +743,65 @@ input[type="radio"]:checked + .tab-label {
   text-align: center;
   color: #6b7280;
 }
+
+.news-form {
+  display: none;
+  background: #fff;
+  padding: 20px;
+  margin-top: 20px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+}
+
+.form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.close-btn {
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  color: #6b7280;
+}
+
+.close-btn:hover {
+  color: #ee0b0b;
+}
+
+.news-form label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 6px;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.news-form input,
+.news-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+  background: #F9FAFB;
+}
+
+#addBtn:checked ~ .news-form {
+      display: block;
+    }
+
+.submit-btn {
+  margin-top: 20px;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 14px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  margin-right: 30px;
+}

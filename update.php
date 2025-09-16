@@ -51,27 +51,50 @@
     <!-- content -->
     <div class="tab-container">
         <div class="tab-content" id="content1">
+            <!-- hidden toggle -->
+            <input type="checkbox" id="addBtn" hidden>
+
             <div class="section-header">
                 <h2>News Management</h2>
-                <button class="add-btn">+ Add News</button>
+                <label for="addBtn" class="add-btn">+ Add News</label>
             </div>
-            <div class="update-card">No news articles yet. Add your first article above!</div>
+
+            <form class="news-form">
+                <div class="form-header">
+                    <h3>Add New Article</h3>
+                    <label for="addBtn" class="close-btn">&times;</label>
+                </div>
+
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" placeholder="enter article..." required>
+
+                <label for="content">Content:</label>
+                <textarea id="content" name="content" placeholder="enter content..." required></textarea>
+
+                <label for="image">Image URL (optional)</label>
+                <input type="file" id="image" name="image">
+
+                <button type="submit" class="submit-btn">Add Article</button>
+            </form>
         </div>
 
-        <div class="tab-content" id="content2">
-            <div class="section-header">
-                <h2>Fixtures Management</h2>
-                <button class="add-btn">+ Add Fixture</button>
-            </div>
-            <div class="update-card">No fixtures scheduled. Add your first fixture above!</div>
-        </div>
+        <div class="update-card">No news articles yet. Add your first article above!</div>
+    </div>
 
-        <div class="tab-content" id="content3">
-            <div class="section-header">
-                <h2>Players Management</h2>
-                <button class="add-btn">+ Add Player</button>
-            </div>
-            <div class="update-card">No players added. Add your first player above!</div>
+    <div class="tab-content" id="content2">
+        <div class="section-header">
+            <h2>Fixtures Management</h2>
+            <button class="add-btn">+ Add Fixture</button>
+        </div>
+        <div class="update-card">No fixtures scheduled. Add your first fixture above!</div>
+    </div>
+
+    <div class="tab-content" id="content3">
+        <div class="section-header">
+            <h2>Players Management</h2>
+            <button class="add-btn">+ Add Player</button>
+        </div>
+        <div class="update-card">No players added. Add your first player above!</div>
 
 </body>
 
