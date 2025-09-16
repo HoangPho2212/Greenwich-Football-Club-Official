@@ -40,7 +40,7 @@
     <section class="hero">
         <div class="hero-left">
             <h1>WE ARE HONOR CLUB FROM UNIVERSITY OF GREENWICH</h1>
-            <p>it's our two in arows achieving this label</label></p>
+            <p>It’s our second term in a row achieving this label.</label></p>
         </div>
 
         <div class="matchup">
