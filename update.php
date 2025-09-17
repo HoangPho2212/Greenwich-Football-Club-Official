@@ -71,21 +71,51 @@
                 <label for="content">Content:</label>
                 <textarea id="content" name="content" placeholder="enter content..." required></textarea>
 
-                <label for="image">Image URL (optional)</label>
+                <label for="image">News image</label>
                 <input type="file" id="image" name="image">
 
                 <button type="submit" class="submit-btn">Add Article</button>
             </form>
+            <div class="update-card">No news articles yet. Add your first article above!</div>
         </div>
 
-        <div class="update-card">No news articles yet. Add your first article above!</div>
-    </div>
+        <div class="tab-content" id="content2">
 
-    <div class="tab-content" id="content2">
-        <div class="section-header">
-            <h2>Fixtures Management</h2>
-            <button class="add-btn">+ Add Fixture</button>
-        </div>
+            <input type="checkbox" id="fixturebtn" hidden>
+
+            <div class="section-header">
+                <h2>Fixtures Management</h2>
+                <label for="fixturebtn" class="add-btn"> Add Fixture</label>
+
+            </div>
+
+        <form class="fixture-form">
+            <div class="form-header">
+                <h3>Add New Article</h3>
+                <label for="fixturebtn" class="close-btn">&times;</label>
+            </div>
+
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" placeholder="match date?" required>
+
+            <label for="time">Time:</label>
+            <input type="time" id="time" name="time" placeholder="match begin at?" required>
+
+            <label for="name">Name:</label>
+            <textarea id="name" name="name" placeholder="enter competitor name..." required></textarea>
+
+            <label for="stadium">Stadium:</label>
+            <input type="text" id="stadium" name="stadium" placeholder="Tuyen Son football field" required>
+
+            <label for="match">Match-type:</label>
+            <input type="match" id="match" name="match" placeholder="friendly match, GW Cup,..." required>
+
+            <label for="image">Competitor Logo</label>
+            <input type="file" id="image" name="image">
+
+            <button type="submit" class="submit-btn">Add Fixture</button>
+        </form>
+
         <div class="update-card">No fixtures scheduled. Add your first fixture above!</div>
     </div>
 
@@ -95,6 +125,7 @@
             <button class="add-btn">+ Add Player</button>
         </div>
         <div class="update-card">No players added. Add your first player above!</div>
+
 
 </body>
 
