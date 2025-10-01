@@ -901,3 +901,17 @@ input[type="radio"]:checked+.tab-label {
     opacity: 1;
   }
 }
+
+.delete-btn {
+  background-color: #e11d48;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.delete-btn:hover {
+  background-color: #b91c1c;
+}

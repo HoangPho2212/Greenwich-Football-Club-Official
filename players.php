@@ -51,53 +51,63 @@
         <h3> <i class="fa-solid fa-sort"></i> Filter by position</h3>
         <div class="filter-button">
             <button class="filter-btn active" data-position="All">All players</button>
-            <button class="filter-btn" data-position="Defender" >Defender</button>
-            <button class="filter-btn"data-position="Midfielder">Midfielder</button>
-            <button class="filter-btn"data-position="Attacker">Attacker</button>
-            <button class="filter-btn"data-position="Goalkeeper">Goalkeeper</button>
+            <button class="filter-btn" data-position="Defender">Defender</button>
+            <button class="filter-btn" data-position="Midfielder">Midfielder</button>
+            <button class="filter-btn" data-position="Attacker">Attacker</button>
+            <button class="filter-btn" data-position="Goalkeeper">Goalkeeper</button>
         </div>
 
-    
-    <div class="player-grid">
-        <div class="player-card">
-            <div class="player-image">
-                <img src="PlayerImage/Quan.jpg" alt="Le Minh Quan">
-                <span class="player-number"> 12 </span>
-            </div>
 
-            <div class="player-infor">
-                <H4>Le Minh Quan</H4>
-                <p class="position" >Defender</p>
-                <p> age <strong>20</strong> </p>
-                <p> role <strong>president</strong> </p>
-                <hr>
-                <h5>Joined Club</h5>
-                <div class="stats">
-                <div><span>2023</span></div>
+        <div class="player-grid">
+            <div class="player-card">
+                <div class="player-image">
+                    <img src="PlayerImage/Quan.jpg" alt="Le Minh Quan">
+                    <span class="player-number"> 12 </span>
+                </div>
+
+                <div class="player-infor">
+                    <H4>Le Minh Quan</H4>
+                    <p class="position">Defender</p>
+                    <p> age <strong>20</strong> </p>
+                    <p> role <strong>president</strong> </p>
+                    <hr>
+                    <h5>Joined Club</h5>
+                    <div class="stats">
+                        <div><span>2023</span></div>
+                        <form action="delete.php" method="POST" onsubmit="return confirm('Are you sure?')">
+                            <input type="hidden" name="id" value="<?= $row['id'] ?>">
+                            <button type="submit" class="delete-btn">Delete</button>
+                        </form>
+
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="player-card">
-            <div class="player-image">
-                <img src="PlayerImage/Pho.jpg" alt="Nguyen Huu Hoang Pho">
-                <span class="player-number"> 19 </span>
-            </div>
+            <div class="player-card">
+                <div class="player-image">
+                    <img src="PlayerImage/Pho.jpg" alt="Nguyen Huu Hoang Pho">
+                    <span class="player-number"> 19 </span>
+                </div>
 
-            <div class="player-infor">
-                <H4>Nguyen Huu Hoang Pho</H4>
-                <p class="position" >Midfielder</p>
-                <p> age <strong>20</strong> </p>
-                <p> role <strong> vice president</strong> </p>
-                <hr>
-                <h5>Joined Club</h5>
-                <div class="stats">
-                <div><span>2023</span></div>
+                <div class="player-infor">
+                    <H4>Nguyen Huu Hoang Pho</H4>
+                    <p class="position">Midfielder</p>
+                    <p> age <strong>20</strong> </p>
+                    <p> role <strong> vice president</strong> </p>
+                    <hr>
+                    <h5>Joined Club</h5>
+                    <div class="stats">
+                        <div><span>2023</span></div>
+                        <form action="delete.php" method="POST" onsubmit="return confirm('Are you sure?')">
+                            <input type="hidden" name="id" value="<?= $row['id'] ?>">
+                            <button type="submit" class="delete-btn">Delete</button>
+                        </form>
+                        <a style="text-decoration: none;" href="edit.php?id=<?= $row['id'] ?>" class="add-btn">Edit</a>
+                    </div>
                 </div>
             </div>
+
         </div>
-        
-    </div>
 
     </div>
     <!--close filter -->
@@ -106,19 +116,19 @@
 <section class="hero-player">
     <h1>SUPPORT THE TEAM</h1>
     <p>Come and cheer on GreFC at our next match. Your support makes all the difference!</p>
-    <div class="support-btn" >
-    <a href="index.php" class="next-fix-btn" > <strong> OUR'S NEXT FIXTURE </strong></a>
-    <a href="https://www.facebook.com/Grefc?locale=vi_VN" class="follow-btn" > <strong> FOLLOW US </strong></a>
+    <div class="support-btn">
+        <a href="index.php" class="next-fix-btn"> <strong> OUR'S NEXT FIXTURE </strong></a>
+        <a href="https://www.facebook.com/Grefc?locale=vi_VN" class="follow-btn"> <strong> FOLLOW US </strong></a>
     </div>
 </section>
 
- <footer style="padding-top: 0;" >
-        <div class="footer-bottom">
-            <img class="footer-logo" src="img/AVATA-GreFC.png" alt="logo of Gre FC"> 
-            <p>Greenwich Football Club Da Nang</p>
-            <p>© 2025 GreFC. All rights reserved.</p>
-            <p>Developed by <i class="fa-brands fa-github"></i> <a href="https://github.com/HoangPho2212">Hoang Pho</a></p>
-        </div>
-    </footer>
+<footer style="padding-top: 0;">
+    <div class="footer-bottom">
+        <img class="footer-logo" src="img/AVATA-GreFC.png" alt="logo of Gre FC">
+        <p>Greenwich Football Club Da Nang</p>
+        <p>© 2025 GreFC. All rights reserved.</p>
+        <p>Developed by <i class="fa-brands fa-github"></i> <a href="https://github.com/HoangPho2212">Hoang Pho</a></p>
+    </div>
+</footer>
 
 </html>
