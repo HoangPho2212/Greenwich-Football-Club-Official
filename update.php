@@ -120,10 +120,43 @@
     </div>
 
     <div class="tab-content" id="content3">
+
+        <input type="checkbox" id="addplayerbtn" hidden>
+
         <div class="section-header">
             <h2>Players Management</h2>
-            <button class="add-btn">+ Add Player</button>
+            <label for="addplayerbtn" class="add-btn">Add Player</label>
         </div>
+
+          <form class="player-form">
+            <div class="form-header">
+                <h3>Add New Player</h3>
+                <label for="addplayerbtn" class="close-btn">&times;</label>
+            </div>
+
+            <label for="number">Number:</label>
+            <input type="number" id="number" name="number" placeholder="player's number" required>
+
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" placeholder="20" required>
+
+            <label for="name">Name:</label>
+            <textarea id="name" name="name" placeholder="Nguyen Huu Hoang Pho" required></textarea>
+
+            <label for="position">Position:</label>
+            <input type="text" id="position" name="position" placeholder="Midfielder" required>
+
+            <label for="role">Role:</label>
+            <input type="text" id="role" name="role" placeholder="Vice Precident" required>
+
+            <label for="image">Profile photo</label>
+            <input type="file" id="image" name="image">
+
+            <label for="year">Joined club:</label>
+            <input type="number" id="year" name="year" placeholder="2023" required>
+
+            <button type="submit" class="submit-btn">Add Fixture</button>
+        </form>
         <div class="update-card">No players added. Add your first player above!</div>
 
 
