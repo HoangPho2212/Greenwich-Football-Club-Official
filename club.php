@@ -82,10 +82,44 @@
             </p>
         </div>
 
-        <div class="story-image">
-            <img src="img/clbstory.jpg" alt="clb picture">
-        </div>
+        <div class="story-image slideshow-container">
+            <div class="slide fade">
+                <img src="img/clbstory.jpg" alt="clb picture 1">
+            </div>
+            <div class="slide fade">
+                <img src="img/clbstory1.jpg" alt="clb picture 2">
+            </div>
+            <div class="slide fade">
+                <img src="img/clbstory2.jpg" alt="clb picture 3">
+            </div>
+            <div class="slide fade">
+                <img src="img/clbstory3.jpg" alt="clb picture 3">
+            </div>
+            <div class="slide fade">
+                <img src="img/clbstory4.jpg" alt="clb picture 3">
+            </div>
+            <div class="slide fade">
+                <img src="img/clbstory5.jpg" alt="clb picture 3">
+            </div>
     </section>
+
+    <script>
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            const slides = document.querySelectorAll(".slideshow-container .slide");
+            slides.forEach(slide => slide.style.display = "none");
+
+            slideIndex++;
+            if (slideIndex > slides.length) {
+                slideIndex = 1;
+            }
+
+            slides[slideIndex - 1].style.display = "block";
+            setTimeout(showSlides, 4000); // Change image every 4 seconds
+        }
+    </script>
 
     <section class="value-section">
         <div class="value-container">
