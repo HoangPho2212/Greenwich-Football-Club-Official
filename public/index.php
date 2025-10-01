@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="icon" href="img/AVATA-GreFC.png">
-    <link rel="stylesheet" href="style.css?v=2">
+    <link rel="icon" href="../uploads/img/AVATA-GreFC.png">
+    <link rel="stylesheet" href="../assets/style.css">
 </head>
 
 <body>
@@ -17,12 +17,12 @@
 
         <div class="container">
 
-            <img class="logo" src="img/AVATA-GreFC.png" alt="logo of Gre FC">
+            <img class="logo" src="../uploads/img/AVATA-GreFC.png" alt="logo of Gre FC">
             <nav>
                 <a href="index.php">New</a>
                 <a href="players.php">Player</a>
                 <a href="club.php">Club</a>
-                <a href="update.php">Update</a>
+                <a href="../public/admin/update.php">Update</a>
             </nav>
         </div>
         <!-- close container -->
@@ -44,11 +44,11 @@
         </div>
 
         <div class="matchup">
-            <img src="img/AVATA-GreFC.png" alt="Gre FC">
+            <img src="../uploads/img/AVATA-GreFC.png" alt="Gre FC">
         </div>
 
         <div class="hero-right">
-            <img src="img/Gre Club.jpg" alt="clb members">
+            <img src="../uploads/img/Gre Club.jpg" alt="clb members">
         </div>
     </section>
 
@@ -58,9 +58,9 @@
         <h2> NEXT FIXTURE</h2>
         <p><i class="fa-solid fa-calendar-days"></i> SAT 16 AUG</p>
         <div class="fixture-card">
-            <img src="img/AVATA-GreFC.png" alt="GreFC Logo">
+            <img src="../uploads/img/AVATA-GreFC.png" alt="GreFC Logo">
             <span class="vs">VS</span>
-            <img src="img/KingFC.png" alt="KC Logo">
+            <img src="../uploads/img/KingFC.png" alt="KC Logo">
             <p><strong>GRE FC</strong> vs <strong>KING'S COLLEGE FC</strong></p>
             <p class="kickoff"><i class="fa-solid fa-clock"></i> 18:30 BST Kick-off</p>
             <p style="font-size: 14px;">Unity Cup • University of Greenwich Sports Ground</p>
@@ -74,7 +74,7 @@
         <p>Experience university football at its finest. Follow GreFC's journey and beyond.</p>
 
         <div class="footer-bottom">
-            <img class="footer-logo" src="img/AVATA-GreFC.png" alt="logo of Gre FC"> 
+            <img class="footer-logo" src="../uploads/img/AVATA-GreFC.png" alt="logo of Gre FC"> 
             <p>Greenwich Football Club Da Nang</p>
             <p>© 2025 GreFC. All rights reserved.</p>
             <p>Developed by <i class="fa-brands fa-github"></i> <a href="https://github.com/HoangPho2212">Hoang Pho</a></p>
