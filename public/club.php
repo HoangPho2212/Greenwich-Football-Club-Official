@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="icon" href="img/AVATA-GreFC.png">
-    <link rel="stylesheet" href="style.css?v=2">
+    <link rel="icon" href="../uploads/img/AVATA-GreFC.png">
+    <link rel="stylesheet" href="../assets/style.css">
 </head>
 
 <body>
@@ -17,12 +17,12 @@
 
         <div class="container">
 
-            <img class="logo" src="img/AVATA-GreFC.png" alt="logo of Gre FC">
+            <img class="logo" src="../uploads/img/AVATA-GreFC.png" alt="logo of Gre FC">
             <nav>
                 <a href="index.php">New</a>
                 <a href="players.php">Player</a>
                 <a href="club.php">Club</a>
-                <a href="update.php">Update</a>
+                <a href="../public/admin/update.php">Update</a>
             </nav>
         </div>
         <!-- close container -->
@@ -36,7 +36,7 @@
 
     <section class="club-section">
         <div class="club-container">
-            <img class="club-logo" src="img/AVATA-GreFC.png" alt="logo of Gre FC">
+            <img class="club-logo" src="../uploads/img/AVATA-GreFC.png" alt="logo of Gre FC">
             <h1>GRE FC</h1>
             <h3>University of Greenwich Foothball Club</h3>
             <p>Established in 2018, GreFC represents the spirit and excellence of the University of Greenwich
@@ -84,22 +84,22 @@
 
         <div class="story-image slideshow-container">
             <div class="slide fade">
-                <img src="img/clbstory.jpg" alt="clb picture 1">
+                <img src="../uploads/img/clbstory.jpg" alt="clb picture 1">
             </div>
             <div class="slide fade">
-                <img src="img/clbstory1.jpg" alt="clb picture 2">
+                <img src="../uploads/img/clbstory1.jpg" alt="clb picture 2">
             </div>
             <div class="slide fade">
-                <img src="img/clbstory2.jpg" alt="clb picture 3">
+                <img src="../uploads/img/clbstory2.jpg" alt="clb picture 3">
             </div>
             <div class="slide fade">
-                <img src="img/clbstory3.jpg" alt="clb picture 3">
+                <img src="../uploads/img/clbstory3.jpg" alt="clb picture 3">
             </div>
             <div class="slide fade">
-                <img src="img/clbstory4.jpg" alt="clb picture 3">
+                <img src="../uploads/img/clbstory4.jpg" alt="clb picture 3">
             </div>
             <div class="slide fade">
-                <img src="img/clbstory5.jpg" alt="clb picture 3">
+                <img src="../uploads/img/clbstory5.jpg" alt="clb picture 3">
             </div>
     </section>
 
@@ -230,7 +230,7 @@
 
     <footer style="padding-top: 0;">
         <div class="footer-bottom">
-            <img class="footer-logo" src="img/AVATA-GreFC.png" alt="logo of Gre FC">
+            <img class="footer-logo" src="../uploads/img/AVATA-GreFC.png" alt="logo of Gre FC">
             <p>Greenwich Football Club Da Nang</p>
             <p>© 2025 GreFC. All rights reserved.</p>
             <p>Developed by <i class="fa-brands fa-github"></i> <a href="https://github.com/HoangPho2212">Hoang Pho</a></p>

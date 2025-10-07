@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="icon" href="img/AVATA-GreFC.png">
-    <link rel="stylesheet" href="style.css?v=2">
+    <link rel="icon" href="../uploads/img/AVATA-GreFC.png">
+    <link rel="stylesheet" href="../assets/style.css">
 </head>
 
 <body>
@@ -17,12 +17,12 @@
 
         <div class="container">
 
-            <img class="logo" src="img/AVATA-GreFC.png" alt="logo of Gre FC">
+            <img class="logo" src="../uploads/img/AVATA-GreFC.png" alt="logo of Gre FC">
             <nav>
                 <a href="index.php">New</a>
                 <a href="players.php">Player</a>
                 <a href="club.php">Club</a>
-                <a href="update.php">Update</a>
+                <a href="../public/admin/update.php">Update</a>
             </nav>
         </div>
         <!-- close container -->
@@ -61,7 +61,7 @@
         <div class="player-grid">
             <div class="player-card">
                 <div class="player-image">
-                    <img src="PlayerImage/Quan.jpg" alt="Le Minh Quan">
+                    <img src="../uploads/PlayerImage/Quan.jpg" alt="Le Minh Quan">
                     <span class="player-number"> 12 </span>
                 </div>
 
@@ -85,7 +85,7 @@
 
             <div class="player-card">
                 <div class="player-image">
-                    <img src="PlayerImage/Pho.jpg" alt="Nguyen Huu Hoang Pho">
+                    <img src="../uploads/PlayerImage/Pho.jpg" alt="Nguyen Huu Hoang Pho">
                     <span class="player-number"> 19 </span>
                 </div>
 
@@ -124,7 +124,7 @@
 
 <footer style="padding-top: 0;">
     <div class="footer-bottom">
-        <img class="footer-logo" src="img/AVATA-GreFC.png" alt="logo of Gre FC">
+        <img class="footer-logo" src="../uploads/img/AVATA-GreFC.png" alt="logo of Gre FC">
         <p>Greenwich Football Club Da Nang</p>
         <p>© 2025 GreFC. All rights reserved.</p>
         <p>Developed by <i class="fa-brands fa-github"></i> <a href="https://github.com/HoangPho2212">Hoang Pho</a></p>

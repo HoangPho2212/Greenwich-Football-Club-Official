@@ -19,9 +19,9 @@
 
             <img class="logo" src="../uploads/img/AVATA-GreFC.png" alt="logo of Gre FC">
             <nav>
-                <a href="index.php">New</a>
-                <a href="players.php">Player</a>
-                <a href="club.php">Club</a>
+                <a href="../public/index.php">New</a>
+                <a href="../public/players.php">Player</a>
+                <a href="../public/club.php">Club</a>
                 <a href="../public/admin/update.php">Update</a>
             </nav>
         </div>
