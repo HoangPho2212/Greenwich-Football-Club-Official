@@ -37,7 +37,8 @@ $fixture = $stmt->fetch(PDO::FETCH_ASSOC);
 
         <div class="auth-section">
             <span> <i class="fa-solid fa-globe"> </i> EN</span>
-            <a href="#">Sign In</a>
+            <a href="/public/admin/login.php" onclick="alert('Bạn không cần đăng nhập để sử dụng trang web. Chỉ Admin mới dùng chức năng này.'); return false;">Sign In</a>
+            <a href="/public/admin/logout.php" >Sign out</a>
         </div>
         <!-- close auth-section -->
 
