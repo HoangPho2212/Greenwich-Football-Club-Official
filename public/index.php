@@ -1,8 +1,8 @@
 <?php
 require '../config/db.php';
 
-$stmt = $pdo->query("SELECT * FROM fixtures ORDER BY date DESC");
-$fixtures = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$stmt = $pdo->query("SELECT * FROM fixtures WHERE date >= CURDATE() ORDER BY date ASC LIMIT 1");
+$fixture = $stmt->fetch(PDO::FETCH_ASSOC);
 
 ?>
 
@@ -66,28 +66,28 @@ $fixtures = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <h2> NEXT FIXTURE</h2>
             <?php if ($fixture && is_array($fixture)): ?>
             <p><i class="fa-solid fa-calendar-days"></i>
-                <?= strtoupper(date('D d M', strtotime($fixture['match_date']))) ?>
+                <?= strtoupper(date('D d M', strtotime($fixture['date']))) ?>
             </p>
 
             <div class="fixture-card">
                 <img src="../uploads/img/AVATA-GreFC.png" alt="GreFC Logo">
                 <span class="vs">VS</span>
-                <img src="<?= htmlspecialchars($fixture['image'] ?? '../uploads/img/opponent.png') ?>" alt="Opponent Logo">
+                <img src="<?= htmlspecialchars($fixture['competitor_logo'] ?? '../uploads/img/opponent.png') ?>" alt="Opponent Logo">
 
                 <p><strong><?= htmlspecialchars($fixture['name']) ?></strong></p>
                 <p class="kickoff">
                     <i class="fa-solid fa-clock"></i>
-                    <?= date('H:i', strtotime($fixture['match_time'])) ?> Kick-off
+                    <?= date('H:i', strtotime($fixture['time'])) ?> Kick-off
                 </p>
 
                 <p style="font-size: 14px;">
                     <?= htmlspecialchars($fixture['match_type']) ?> • <?= htmlspecialchars($fixture['stadium']) ?>
                 </p>
 
-                <form action="delete_fixture.php" method="POST" onsubmit="return confirm('Delete this fixture?')" style="margin-top:10px;">
+                <!-- <form action="delete_fixture.php" method="POST" onsubmit="return confirm('Delete this fixture?')" style="margin-top:10px;">
                     <input type="hidden" name="id" value="<?= $fixture['id'] ?>">
                     <button type="submit" class="delete-btn">Delete</button>
-                </form>
+                </form> -->
             </div>
             <?php else: ?>
             <p>No upcoming fixtures.</p>

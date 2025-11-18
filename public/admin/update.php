@@ -91,7 +91,7 @@
 
         <form class="fixture-form" action="create.php" method="POST" enctype="multipart/form-data">
             <div class="form-header">
-                <h3>Add New Article</h3>
+                <h3>Add New Fixture</h3>
                 <label for="fixturebtn" class="close-btn">&times;</label>
             </div>
 
@@ -108,7 +108,7 @@
             <input type="text" id="stadium" name="stadium" placeholder="Tuyen Son football field" required>
 
             <label for="match">Match-type:</label>
-            <input type="match" id="match" name="match" placeholder="friendly match, GW Cup,..." required>
+            <input type="match" id="match" name="match_type" placeholder="friendly match, GW Cup,..." required>
 
             <label for="image">Competitor Logo</label>
             <input type="file" id="image" name="image">
