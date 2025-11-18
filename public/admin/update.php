@@ -89,7 +89,7 @@
 
             </div>
 
-        <form class="fixture-form">
+        <form class="fixture-form" action="create_fixture.php" method="POST" enctype="multipart/form-data">
             <div class="form-header">
                 <h3>Add New Article</h3>
                 <label for="fixturebtn" class="close-btn">&times;</label>

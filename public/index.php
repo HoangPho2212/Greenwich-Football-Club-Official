@@ -1,3 +1,11 @@
+<?php
+require '../config/db.php';
+
+$stmt = $pdo->query("SELECT * FROM fixtures ORDER BY date DESC");
+$fixtures = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +21,7 @@
 </head>
 
 <body>
-    <header class="navbar" >
+    <header class="navbar">
 
         <div class="container">
 
@@ -55,15 +63,35 @@
     <!-- Fixture Section -->
     <section class="fixture-section">
         <div class="fixture-container">
-        <h2> NEXT FIXTURE</h2>
-        <p><i class="fa-solid fa-calendar-days"></i> SAT 16 AUG</p>
-        <div class="fixture-card">
-            <img src="../uploads/img/AVATA-GreFC.png" alt="GreFC Logo">
-            <span class="vs">VS</span>
-            <img src="../uploads/img/KingFC.png" alt="KC Logo">
-            <p><strong>GRE FC</strong> vs <strong>KING'S COLLEGE FC</strong></p>
-            <p class="kickoff"><i class="fa-solid fa-clock"></i> 18:30 BST Kick-off</p>
-            <p style="font-size: 14px;">Unity Cup • University of Greenwich Sports Ground</p>
+            <h2> NEXT FIXTURE</h2>
+            <?php if ($fixture && is_array($fixture)): ?>
+            <p><i class="fa-solid fa-calendar-days"></i>
+                <?= strtoupper(date('D d M', strtotime($fixture['match_date']))) ?>
+            </p>
+
+            <div class="fixture-card">
+                <img src="../uploads/img/AVATA-GreFC.png" alt="GreFC Logo">
+                <span class="vs">VS</span>
+                <img src="<?= htmlspecialchars($fixture['image'] ?? '../uploads/img/opponent.png') ?>" alt="Opponent Logo">
+
+                <p><strong><?= htmlspecialchars($fixture['name']) ?></strong></p>
+                <p class="kickoff">
+                    <i class="fa-solid fa-clock"></i>
+                    <?= date('H:i', strtotime($fixture['match_time'])) ?> Kick-off
+                </p>
+
+                <p style="font-size: 14px;">
+                    <?= htmlspecialchars($fixture['match_type']) ?> • <?= htmlspecialchars($fixture['stadium']) ?>
+                </p>
+
+                <form action="delete_fixture.php" method="POST" onsubmit="return confirm('Delete this fixture?')" style="margin-top:10px;">
+                    <input type="hidden" name="id" value="<?= $fixture['id'] ?>">
+                    <button type="submit" class="delete-btn">Delete</button>
+                </form>
+            </div>
+            <?php else: ?>
+            <p>No upcoming fixtures.</p>
+            <?php endif; ?>
         </div>
         </div>
     </section>
@@ -74,7 +102,7 @@
         <p>Experience university football at its finest. Follow GreFC's journey and beyond.</p>
 
         <div class="footer-bottom">
-            <img class="footer-logo" src="../uploads/img/AVATA-GreFC.png" alt="logo of Gre FC"> 
+            <img class="footer-logo" src="../uploads/img/AVATA-GreFC.png" alt="logo of Gre FC">
             <p>Greenwich Football Club Da Nang</p>
             <p>© 2025 GreFC. All rights reserved.</p>
             <p>Developed by <i class="fa-brands fa-github"></i> <a href="https://github.com/HoangPho2212">Hoang Pho</a></p>
