@@ -1,3 +1,15 @@
+<?php
+include '../config/db.php';
+
+try {
+    $stmt = $pdo ->query("SELECT * FROM players ORDER BY id ASC");
+    $players = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    echo " Database Error: " . $e->getMessage();
+    $players = [];
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -107,7 +119,30 @@
                 </div>
             </div>
 
+            <?php if ($players): ?>
+                <?php foreach ($players as $player): ?>
+                <div class="player-card">
+                    <div class="player-image">
+                        <img src="<?= htmlspecialchars($player['profile_photo'] ?? '../uploads/img/AVATA-GreFC.png') ?>" alt="<?= htmlspecialchars($player['name']) ?>">
+                        <span class="player-number"> <?= htmlspecialchars($player['number']) ?> </span>
+                    </div>
+
+                    <div class="player-infor">
+                        <h4><?= htmlspecialchars($player['name']) ?></H4>
+                        <p class="position"><?= htmlspecialchars($player['position'])?></p>
+                        <p> age <strong><?= htmlspecialchars($player['age']) ?></strong> </p>
+                        <p> role <strong><?= htmlspecialchars($player['role']) ?></strong> </p>
+                        <hr>
+                        <h5>Joined Club</h5>
+                        <div class="stats">
+                            <div><span><?= htmlspecialchars($player['joined_year']) ?></span></div>
+                    </div>
+                </div>
         </div>
+        <?php endforeach ?>
+        <?php else: ?>
+            <p>No players found.</p>
+        <?php endif; ?>
 
     </div>
     <!--close filter -->

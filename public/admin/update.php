@@ -89,7 +89,7 @@
 
             </div>
 
-        <form class="fixture-form" action="create.php" method="POST" enctype="multipart/form-data">
+        <form class="fixture-form" action="create_fixture.php" method="POST" enctype="multipart/form-data">
             <div class="form-header">
                 <h3>Add New Fixture</h3>
                 <label for="fixturebtn" class="close-btn">&times;</label>
@@ -128,7 +128,7 @@
             <label for="addplayerbtn" class="add-btn">Add Player</label>
         </div>
 
-          <form class="player-form">
+          <form class="player-form" action="create_player.php" method="POST" enctype="multipart/form-data">
             <div class="form-header">
                 <h3>Add New Player</h3>
                 <label for="addplayerbtn" class="close-btn">&times;</label>
@@ -153,9 +153,9 @@
             <input type="file" id="image" name="image">
 
             <label for="year">Joined club:</label>
-            <input type="number" id="year" name="year" placeholder="2023" required>
+            <input type="number" id="year" name="joined_year" placeholder="2023" required>
 
-            <button type="submit" class="submit-btn">Add Fixture</button>
+            <button type="submit" class="submit-btn">Add Player</button>
         </form>
         <div class="update-card">No players added. Add your first player above!</div>
 
