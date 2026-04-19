@@ -8,6 +8,7 @@ export interface IPlayer extends Document {
   role?: string;
   joined_year?: number;
   profile_photo?: string;
+  category: 'player' | 'non-player';
 }
 
 const PlayerSchema: Schema = new Schema({
@@ -17,7 +18,8 @@ const PlayerSchema: Schema = new Schema({
   position: { type: String, required: true },
   role: { type: String },
   joined_year: { type: Number },
-  profile_photo: { type: String }
+  profile_photo: { type: String },
+  category: { type: String, enum: ['player', 'non-player'], default: 'player' }
 }, {
   timestamps: true
 });
