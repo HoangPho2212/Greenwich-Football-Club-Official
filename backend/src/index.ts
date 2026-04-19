@@ -239,6 +239,18 @@ app.post('/api/home-content', upload.single('heroImage'), async (req, res) => {
   }
 });
 
+// --- Admin Login ---
+app.post('/api/admin/login', (req, res) => {
+  const { password } = req.body;
+  const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'grefc2026';
+  
+  if (password === ADMIN_PASSWORD) {
+    res.json({ success: true, token: 'authenticated_grefc_admin' });
+  } else {
+    res.status(401).json({ success: false, message: 'Invalid password' });
+  }
+});
+
 // Real-time connections
 io.on('connection', (socket) => {
   console.log('A user connected:', socket.id);

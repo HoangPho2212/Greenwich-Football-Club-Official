@@ -4,10 +4,25 @@ import { useState, useEffect } from 'react';
 import { useMutation, useQueryClient, useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import ImageCropper from '@/components/ImageCropper';
-import { Trash2, UserPlus, Calendar, ListChecks, MapPin, Trophy, Image as ImageIcon, Plus, Star, Layout, Edit3, XCircle, Search } from 'lucide-react';
+import { Trash2, UserPlus, Calendar, ListChecks, MapPin, Trophy, Image as ImageIcon, Plus, Star, Layout, Edit3, XCircle, Search, LogOut } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 export default function AdminPage() {
   const queryClient = useQueryClient();
+  const router = useRouter();
+
+  // --- Auth Check ---
+  useEffect(() => {
+    const token = localStorage.getItem('admin_token');
+    if (token !== 'authenticated_grefc_admin') {
+      router.push('/admin/login');
+    }
+  }, [router]);
+
+  const handleLogout = () => {
+    localStorage.removeItem('admin_token');
+    router.push('/admin/login');
+  };
   
   // --- Form States ---
   const [playerForm, setPlayerForm] = useState({ 

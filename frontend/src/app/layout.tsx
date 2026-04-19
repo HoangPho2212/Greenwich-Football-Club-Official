@@ -33,7 +33,6 @@ export default function RootLayout({
                 <a href="/" className="hover:text-blue-300 transition-colors">Home</a>
                 <a href="/players" className="hover:text-blue-300 transition-colors">Squad</a>
                 <a href="/club" className="hover:text-blue-300 transition-colors">About Club</a>
-                <a href="/admin" className="px-4 py-2 bg-white text-blue-900 rounded-full hover:bg-blue-400 hover:text-white transition-all shadow-lg">Admin</a>
               </div>
             </div>
           </nav>
@@ -73,7 +72,6 @@ export default function RootLayout({
                     <li><a href="/" className="hover:text-white transition-colors flex items-center gap-2">Home Page</a></li>
                     <li><a href="/players" className="hover:text-white transition-colors flex items-center gap-2">Squad & Staff</a></li>
                     <li><a href="/club" className="hover:text-white transition-colors flex items-center gap-2">Club History</a></li>
-                    <li><a href="/admin" className="hover:text-white transition-colors flex items-center gap-2">Admin Dashboard</a></li>
                   </ul>
                 </div>
 
