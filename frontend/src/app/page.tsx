@@ -5,14 +5,21 @@ import axios from 'axios';
 import { useEffect } from 'react';
 import { io } from 'socket.io-client';
 import { MapPin, Trophy, Star, ArrowRight } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 export default function Home() {
+  const router = useRouter();
+
+  // --- Fetch Home Content ---
+  const { data: homeContent } = useQuery({
+    queryKey: ['home-content'],
+    queryFn: async () => (await axios.get('http://localhost:5000/api/home-content')).data
+  });
+
+  // --- Fetch Fixtures ---
   const { data: fixtures, isLoading } = useQuery({
     queryKey: ['fixtures'],
-    queryFn: async () => {
-      const res = await axios.get('http://localhost:5000/api/fixtures');
-      return res.data;
-    }
+    queryFn: async () => (await axios.get('http://localhost:5000/api/fixtures')).data
   });
 
   useEffect(() => {
@@ -25,11 +32,11 @@ export default function Home() {
 
   return (
     <div className="pb-20 space-y-24">
-      {/* --- HERO SECTION: PREMIUM LOOK --- */}
+      {/* --- HERO SECTION: DYNAMIC CONTENT --- */}
       <section className="relative w-full h-[700px] rounded-[40px] overflow-hidden shadow-[0_32px_64px_-15px_rgba(0,0,0,0.3)] group">
         <img 
-          src="/uploads/img/Gre Club.jpg" 
-          alt="GreFC Club" 
+          src={homeContent?.heroImage || "/uploads/img/Gre Club.jpg"} 
+          alt="GreFC Club Hero" 
           className="w-full h-full object-cover object-center transition-transform duration-1000 group-hover:scale-105"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-blue-950 via-blue-900/20 to-transparent"></div>
@@ -38,20 +45,29 @@ export default function Home() {
           <div className="max-w-4xl space-y-6">
             <div className="inline-flex items-center gap-2 bg-blue-500/20 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full">
               <Trophy size={16} className="text-yellow-400" />
+              <span className="text-white text-xs font-black uppercase tracking-widest">
+                {homeContent?.heroSubtitle || '4-Time Honor Club'}
+              </span>
             </div>
             
-            <h1 className="text-7xl md:text-8xl font-black text-white leading-[0.9] tracking-tighter">
-              Official <br/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">Gre FC</span>
+            <h1 className="text-7xl md:text-8xl font-black text-white leading-[0.9] tracking-tighter uppercase italic">
+              {homeContent?.heroTitle?.split(' ').map((word: string, i: number) => (
+                <span key={i} className={i === homeContent?.heroTitle?.split(' ').length - 1 ? 'text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300' : ''}>
+                  {word}{' '}
+                </span>
+              )) || 'GRE FC DOMINANCE.'}
             </h1>
             
             <p className="text-blue-100 text-xl md:text-2xl font-medium max-w-2xl leading-relaxed opacity-90">
-              We embody the strength of Greenwich.
+              {homeContent?.heroDescription || 'Niềm đam mê sân cỏ, tinh thần đồng đội và khát vọng chiến thắng.'}
             </p>
 
             <div className="flex gap-4 pt-4">
-              <button className="bg-white text-blue-900 font-black px-8 py-4 rounded-2xl hover:bg-blue-400 hover:text-white transition-all flex items-center gap-2 group/btn">
-                Our's line up <ArrowRight size={20} className="group-hover/btn:translate-x-1 transition-transform" />
+              <button 
+                onClick={() => router.push('/players')}
+                className="bg-white text-blue-900 font-black px-8 py-4 rounded-2xl hover:bg-blue-400 hover:text-white transition-all flex items-center gap-2 group/btn shadow-xl"
+              >
+                DISCOVER SQUAD <ArrowRight size={20} className="group-hover/btn:translate-x-1 transition-transform" />
               </button>
             </div>
           </div>
@@ -61,7 +77,7 @@ export default function Home() {
       {/* --- FIXTURES SECTION --- */}
       <section className="space-y-12">
         <div className="flex flex-col items-center text-center space-y-4">
-          <h2 className="text-5xl font-black text-blue-950 tracking-tighter uppercase">Upcoming Battles</h2>
+          <h2 className="text-5xl font-black text-blue-950 tracking-tighter uppercase italic">Upcoming Battles</h2>
           <div className="w-24 h-2 bg-blue-600 rounded-full"></div>
         </div>
         
@@ -96,9 +112,9 @@ export default function Home() {
                   </div>
 
                   <div className="flex flex-col items-center gap-4 flex-1">
-                    <div className="w-20 h-20 rounded-full overflow-hidden bg-white shadow-xl border-4 border-gray-50 group-hover:border-blue-100 transition-colors">
+                    <div className="w-20 h-20 rounded-full overflow-hidden bg-white shadow-xl border-4 border-gray-50 group-hover:border-blue-100 transition-colors flex items-center justify-center">
                       {fixture.competitor_logo ? (
-                        <img src={fixture.competitor_logo} alt={fixture.name} className="w-full h-full object-contain p-2" />
+                        <img src={fixture.competitor_logo} alt={fixture.name} className="w-full h-full object-contain scale-110" />
                       ) : (
                         <div className="w-full h-full bg-gray-50 flex items-center justify-center text-3xl">🛡️</div>
                       )}
@@ -108,7 +124,7 @@ export default function Home() {
                 </div>
 
                 {/* Stadium Footer */}
-                <div className="pt-6 border-t border-gray-50 flex justify-center">
+                <div className="pt-6 border-t border-gray-100 flex justify-center">
                    <div className="flex items-center gap-2 px-4 py-2 bg-gray-50 rounded-2xl group-hover:bg-blue-50 transition-colors">
                      <MapPin size={14} className="text-blue-600" />
                      <span className="text-gray-500 text-[10px] font-black uppercase tracking-widest group-hover:text-blue-900">{fixture.stadium}</span>

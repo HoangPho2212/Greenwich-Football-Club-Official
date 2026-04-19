@@ -11,6 +11,7 @@ import Player from './models/Player.js';
 import Fixture from './models/Fixture.js';
 import Achievement from './models/Achievement.js';
 import ClubImage from './models/ClubImage.js';
+import HomeContent from './models/HomeContent.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -188,6 +189,39 @@ app.delete('/api/club-images/:id', async (req, res) => {
     res.json({ message: 'Deleted' });
   } catch (error) {
     res.status(500).json({ error: 'Server error' });
+  }
+});
+
+// --- Home Content Routes ---
+app.get('/api/home-content', async (req, res) => {
+  try {
+    let content = await HomeContent.findOne();
+    if (!content) {
+      content = new HomeContent();
+      await content.save();
+    }
+    res.json(content);
+  } catch (error) {
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
+app.post('/api/home-content', upload.single('heroImage'), async (req, res) => {
+  try {
+    let content = await HomeContent.findOne();
+    if (!content) content = new HomeContent();
+
+    const updateData = { ...req.body };
+    if (req.file) {
+      updateData.heroImage = `/uploads/${req.file.filename}`;
+    }
+
+    Object.assign(content, updateData);
+    await content.save();
+    res.json(content);
+  } catch (error) {
+    console.error('Home Content Update Error:', error);
+    res.status(500).json({ error: 'Update failed' });
   }
 });
 

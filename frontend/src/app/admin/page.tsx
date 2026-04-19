@@ -1,24 +1,16 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useMutation, useQueryClient, useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import ImageCropper from '@/components/ImageCropper';
-import { Trash2, UserPlus, Calendar, ListChecks, MapPin, Trophy, Image as ImageIcon, Plus, Star } from 'lucide-react';
+import { Trash2, UserPlus, Calendar, ListChecks, MapPin, Trophy, Image as ImageIcon, Plus, Star, Layout, Edit3 } from 'lucide-react';
 
 export default function AdminPage() {
   const queryClient = useQueryClient();
   
   // --- Form States ---
-  const [playerForm, setPlayerForm] = useState({ 
-    name: '', 
-    position: '', 
-    number: '', 
-    age: '', 
-    role: '', 
-    category: 'player',
-    joined_year: new Date().getFullYear().toString()
-  });
+  const [playerForm, setPlayerForm] = useState({ name: '', position: '', number: '', age: '', role: '', category: 'player', joined_year: '2024' });
   const [playerImage, setPlayerImage] = useState<File | null>(null);
   const [showPlayerCropper, setShowPlayerCropper] = useState(false);
   
@@ -30,21 +22,37 @@ export default function AdminPage() {
   
   const [showSliderCropper, setShowSliderCropper] = useState(false);
 
+  // Home Content State
+  const [homeForm, setHomeForm] = useState({ heroTitle: '', heroSubtitle: '', heroDescription: '', welcomeTitle: '', welcomeDescription: '' });
+  const [showHeroCropper, setShowHeroCropper] = useState(false);
+
   // --- Data Queries ---
   const { data: players } = useQuery({ queryKey: ['players'], queryFn: async () => (await axios.get('http://localhost:5000/api/players')).data });
   const { data: fixtures } = useQuery({ queryKey: ['fixtures'], queryFn: async () => (await axios.get('http://localhost:5000/api/fixtures')).data });
   const { data: achievements } = useQuery({ queryKey: ['achievements'], queryFn: async () => (await axios.get('http://localhost:5000/api/achievements')).data });
   const { data: clubImages } = useQuery({ queryKey: ['club-images'], queryFn: async () => (await axios.get('http://localhost:5000/api/club-images')).data });
+  const { data: homeContent } = useQuery({ 
+    queryKey: ['home-content'], 
+    queryFn: async () => (await axios.get('http://localhost:5000/api/home-content')).data 
+  });
+
+  // Sync home form with fetched data
+  useEffect(() => {
+    if (homeContent) {
+      setHomeForm({
+        heroTitle: homeContent.heroTitle,
+        heroSubtitle: homeContent.heroSubtitle,
+        heroDescription: homeContent.heroDescription,
+        welcomeTitle: homeContent.welcomeTitle,
+        welcomeDescription: homeContent.welcomeDescription
+      });
+    }
+  }, [homeContent]);
 
   // --- Mutations ---
   const addPlayer = useMutation({
     mutationFn: async (formData: FormData) => axios.post('http://localhost:5000/api/players', formData),
-    onSuccess: () => { 
-      queryClient.invalidateQueries({ queryKey: ['players'] }); 
-      setPlayerForm({ name: '', position: '', number: '', age: '', role: '', category: 'player', joined_year: '2024' }); 
-      setPlayerImage(null); 
-      alert('✅ Member added!'); 
-    },
+    onSuccess: () => { queryClient.invalidateQueries({ queryKey: ['players'] }); setPlayerForm({ name: '', position: '', number: '', age: '', role: '', category: 'player', joined_year: '2024' }); setPlayerImage(null); alert('✅ Member added!'); },
     onError: (err: any) => alert('❌ Error: ' + (err.response?.data?.error || err.message))
   });
 
@@ -52,12 +60,7 @@ export default function AdminPage() {
 
   const addFixture = useMutation({
     mutationFn: async (formData: FormData) => axios.post('http://localhost:5000/api/fixtures', formData),
-    onSuccess: () => { 
-      queryClient.invalidateQueries({ queryKey: ['fixtures'] }); 
-      setFixtureForm({ name: '', match_type: '', date: '', time: '', stadium: '' }); 
-      setFixtureImage(null); 
-      alert('✅ Fixture added!'); 
-    },
+    onSuccess: () => { queryClient.invalidateQueries({ queryKey: ['fixtures'] }); setFixtureForm({ name: '', match_type: '', date: '', time: '', stadium: '' }); setFixtureImage(null); alert('✅ Fixture added!'); },
     onError: (err: any) => alert('❌ Error: ' + (err.response?.data?.error || err.message))
   });
 
@@ -70,6 +73,11 @@ export default function AdminPage() {
 
   const deleteAchievement = useMutation({ mutationFn: async (id: string) => axios.delete(`http://localhost:5000/api/achievements/${id}`), onSuccess: () => queryClient.invalidateQueries({ queryKey: ['achievements'] }) });
 
+  const updateHomeContent = useMutation({
+    mutationFn: async (formData: FormData) => axios.post('http://localhost:5000/api/home-content', formData),
+    onSuccess: () => { queryClient.invalidateQueries({ queryKey: ['home-content'] }); alert('✅ Homepage updated!'); }
+  });
+
   const addSliderImage = useMutation({
     mutationFn: async (formData: FormData) => axios.post('http://localhost:5000/api/club-images', formData),
     onSuccess: () => { queryClient.invalidateQueries({ queryKey: ['club-images'] }); alert('✅ Slider image added!'); }
@@ -78,28 +86,24 @@ export default function AdminPage() {
   const deleteClubImage = useMutation({ mutationFn: async (id: string) => axios.delete(`http://localhost:5000/api/club-images/${id}`), onSuccess: () => queryClient.invalidateQueries({ queryKey: ['club-images'] }) });
 
   // --- Handlers ---
-  const handlePlayerSubmit = (e: React.FormEvent) => { 
-    e.preventDefault(); 
-    const fd = new FormData(); 
-    Object.entries(playerForm).forEach(([k, v]) => fd.append(k, v)); 
-    if (playerImage) fd.append('image', playerImage); 
-    addPlayer.mutate(fd); 
+  const handlePlayerSubmit = (e: React.FormEvent) => { e.preventDefault(); const fd = new FormData(); Object.entries(playerForm).forEach(([k, v]) => fd.append(k, v)); if (playerImage) fd.append('image', playerImage); addPlayer.mutate(fd); };
+  const handleFixtureSubmit = (e: React.FormEvent) => { e.preventDefault(); const fd = new FormData(); Object.entries(fixtureForm).forEach(([k, v]) => fd.append(k, v)); if (fixtureImage) fd.append('image', fixtureImage); addFixture.mutate(fd); };
+  
+  const handleHomeSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const fd = new FormData();
+    Object.entries(homeForm).forEach(([k, v]) => fd.append(k, v));
+    updateHomeContent.mutate(fd);
   };
 
-  const handleFixtureSubmit = (e: React.FormEvent) => { 
-    e.preventDefault(); 
-    const fd = new FormData(); 
-    Object.entries(fixtureForm).forEach(([k, v]) => fd.append(k, v)); 
-    if (fixtureImage) fd.append('image', fixtureImage); 
-    addFixture.mutate(fd); 
+  const handleHeroImageSubmit = (file: File) => {
+    const fd = new FormData();
+    fd.append('heroImage', file);
+    updateHomeContent.mutate(fd);
+    setShowHeroCropper(false);
   };
 
-  const handleSliderSubmit = (file: File) => { 
-    const fd = new FormData(); 
-    fd.append('image', file); 
-    addSliderImage.mutate(fd); 
-    setShowSliderCropper(false); 
-  };
+  const handleSliderSubmit = (file: File) => { const fd = new FormData(); fd.append('image', file); addSliderImage.mutate(fd); setShowSliderCropper(false); };
 
   return (
     <div className="py-10 max-w-7xl mx-auto px-4 space-y-16">
@@ -107,16 +111,56 @@ export default function AdminPage() {
 
       <div className="grid lg:grid-cols-2 gap-10">
         
+        {/* --- 0. HOMEPAGE CONTENT --- */}
+        <div className="lg:col-span-2 bg-blue-50/50 p-8 rounded-[40px] border border-blue-100 space-y-8">
+          <div className="flex items-center gap-3 text-blue-900"><Layout size={28}/><h2 className="text-2xl font-bold uppercase tracking-tight">Homepage Customization</h2></div>
+          
+          <div className="grid lg:grid-cols-3 gap-8">
+            {/* Hero Image Edit */}
+            <div className="space-y-4">
+              <label className="text-[10px] font-black text-blue-400 uppercase tracking-widest">Main Hero Image</label>
+              <div className="relative aspect-video rounded-3xl overflow-hidden border-4 border-white shadow-xl group">
+                <img src={homeContent?.heroImage || '/uploads/img/Gre Club.jpg'} className="w-full h-full object-cover" />
+                <button onClick={() => setShowHeroCropper(true)} className="absolute inset-0 bg-blue-900/60 text-white opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center gap-2">
+                  <Edit3 size={32} />
+                  <span className="font-bold text-xs">CHANGE PHOTO</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Text Content Form */}
+            <form onSubmit={handleHomeSubmit} className="lg:col-span-2 grid md:grid-cols-2 gap-6">
+              <div className="space-y-4">
+                <div>
+                  <label className="text-[10px] font-black text-gray-400 uppercase ml-1">Hero Title</label>
+                  <input className="w-full p-3 bg-white border border-gray-100 rounded-xl outline-none focus:ring-2 focus:ring-blue-500 font-black text-lg" value={homeForm.heroTitle} onChange={e => setHomeForm({...homeForm, heroTitle: e.target.value})} />
+                </div>
+                <div>
+                  <label className="text-[10px] font-black text-gray-400 uppercase ml-1">Hero Subtitle</label>
+                  <input className="w-full p-3 bg-white border border-gray-100 rounded-xl outline-none focus:ring-2 focus:ring-blue-500 font-bold" value={homeForm.heroSubtitle} onChange={e => setHomeForm({...homeForm, heroSubtitle: e.target.value})} />
+                </div>
+              </div>
+              <div className="space-y-4">
+                <div>
+                  <label className="text-[10px] font-black text-gray-400 uppercase ml-1">Hero Description</label>
+                  <textarea className="w-full p-3 bg-white border border-gray-100 rounded-xl outline-none focus:ring-2 focus:ring-blue-500 h-32 text-sm leading-relaxed" value={homeForm.heroDescription} onChange={e => setHomeForm({...homeForm, heroDescription: e.target.value})} />
+                </div>
+                <button type="submit" disabled={updateHomeContent.isPending} className="w-full bg-blue-600 text-white font-black p-4 rounded-2xl hover:bg-black transition shadow-lg shadow-blue-200">
+                  {updateHomeContent.isPending ? 'SAVING...' : 'UPDATE HOMEPAGE TEXT'}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
         {/* --- 1. FULL PLAYER FORM --- */}
         <div className="bg-white p-8 rounded-[40px] shadow-xl border border-gray-100 space-y-6">
           <div className="flex items-center gap-3 text-blue-900"><UserPlus size={28}/><h2 className="text-2xl font-bold uppercase">Add Member</h2></div>
           <form onSubmit={handlePlayerSubmit} className="space-y-4">
-            {/* Category Selector */}
             <div className="flex gap-2 p-1 bg-gray-100 rounded-2xl">
               <button type="button" onClick={() => setPlayerForm({...playerForm, category: 'player'})} className={`flex-1 py-2 rounded-xl text-xs font-black transition ${playerForm.category === 'player' ? 'bg-blue-600 text-white shadow-md' : 'text-gray-400 hover:text-gray-600'}`}>PLAYER</button>
               <button type="button" onClick={() => setPlayerForm({...playerForm, category: 'non-player'})} className={`flex-1 py-2 rounded-xl text-xs font-black transition ${playerForm.category === 'non-player' ? 'bg-pink-500 text-white shadow-md' : 'text-gray-400 hover:text-gray-600'}`}>NON-PLAYER / STAFF</button>
             </div>
-
             <div className="grid grid-cols-2 gap-4">
               <input className="p-3 bg-gray-50 border border-gray-200 rounded-xl outline-none focus:ring-2 focus:ring-blue-500" placeholder="Full Name" value={playerForm.name} onChange={e => setPlayerForm({...playerForm, name: e.target.value})} required />
               <input className="p-3 bg-gray-50 border border-gray-200 rounded-xl outline-none focus:ring-2 focus:ring-blue-500" placeholder={playerForm.category === 'player' ? "Position (e.g. Striker)" : "Role (e.g. Manager)"} value={playerForm.position} onChange={e => setPlayerForm({...playerForm, position: e.target.value})} required />
@@ -130,13 +174,10 @@ export default function AdminPage() {
               <input className="p-3 bg-gray-50 border border-gray-200 rounded-xl outline-none focus:ring-2 focus:ring-blue-500" placeholder="Age" type="number" value={playerForm.age} onChange={e => setPlayerForm({...playerForm, age: e.target.value})} />
             </div>
             <input className="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl outline-none focus:ring-2 focus:ring-blue-500" placeholder={playerForm.category === 'player' ? "Team Role (e.g. Captain)" : "Department (e.g. Media Team)"} value={playerForm.role} onChange={e => setPlayerForm({...playerForm, role: e.target.value})} />
-            
             <button type="button" onClick={() => setShowPlayerCropper(true)} className={`w-full p-4 rounded-xl font-black text-xs border-2 border-dashed transition ${playerImage ? 'bg-green-50 border-green-500 text-green-700' : 'border-blue-200 text-blue-600 hover:bg-blue-50'}`}>
               {playerImage ? 'PHOTO READY ✓' : 'SELECT & CROP PHOTO'}
             </button>
-            <button type="submit" disabled={addPlayer.isPending} className="w-full bg-blue-900 text-white font-black p-4 rounded-2xl hover:bg-black transition shadow-lg shadow-blue-100 disabled:opacity-50">
-              {addPlayer.isPending ? '⏳ SAVING...' : 'SAVE MEMBER'}
-            </button>
+            <button type="submit" disabled={addPlayer.isPending} className="w-full bg-blue-900 text-white font-black p-4 rounded-2xl hover:bg-black transition shadow-lg shadow-blue-100 disabled:opacity-50">SAVE MEMBER</button>
           </form>
         </div>
 
@@ -146,29 +187,15 @@ export default function AdminPage() {
           <form onSubmit={handleFixtureSubmit} className="space-y-4">
             <input className="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl outline-none focus:ring-2 focus:ring-green-500" placeholder="Opponent Name" value={fixtureForm.name} onChange={e => setFixtureForm({...fixtureForm, name: e.target.value})} required />
             <input className="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl outline-none focus:ring-2 focus:ring-green-500" placeholder="Match Type (e.g. Friendly)" value={fixtureForm.match_type} onChange={e => setFixtureForm({...fixtureForm, match_type: e.target.value})} required />
-            
             <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-1">
-                <label className="text-[10px] font-black text-gray-400 ml-1 uppercase">Date</label>
-                <input className="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl outline-none focus:ring-2 focus:ring-green-500" type="date" value={fixtureForm.date} onChange={e => setFixtureForm({...fixtureForm, date: e.target.value})} required />
-              </div>
-              <div className="space-y-1">
-                <label className="text-[10px] font-black text-gray-400 ml-1 uppercase">Time</label>
-                <input className="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl outline-none focus:ring-2 focus:ring-green-500" type="time" value={fixtureForm.time} onChange={e => setFixtureForm({...fixtureForm, time: e.target.value})} required />
-              </div>
+              <div className="space-y-1"><label className="text-[10px] font-black text-gray-400 ml-1 uppercase">Date</label><input className="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl outline-none focus:ring-2 focus:ring-green-500" type="date" value={fixtureForm.date} onChange={e => setFixtureForm({...fixtureForm, date: e.target.value})} required /></div>
+              <div className="space-y-1"><label className="text-[10px] font-black text-gray-400 ml-1 uppercase">Time</label><input className="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl outline-none focus:ring-2 focus:ring-green-500" type="time" value={fixtureForm.time} onChange={e => setFixtureForm({...fixtureForm, time: e.target.value})} required /></div>
             </div>
-            
-            <div className="space-y-1">
-              <label className="text-[10px] font-black text-gray-400 ml-1 uppercase flex items-center gap-1"><MapPin size={10}/> Stadium</label>
-              <input className="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl outline-none focus:ring-2 focus:ring-green-500" placeholder="Stadium Name" value={fixtureForm.stadium} onChange={e => setFixtureForm({...fixtureForm, stadium: e.target.value})} required />
-            </div>
-
+            <input className="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl outline-none focus:ring-2 focus:ring-green-500" placeholder="Stadium Name" value={fixtureForm.stadium} onChange={e => setFixtureForm({...fixtureForm, stadium: e.target.value})} required />
             <button type="button" onClick={() => setShowFixtureCropper(true)} className={`w-full p-4 rounded-xl font-black text-xs border-2 border-dashed transition ${fixtureImage ? 'bg-green-50 border-green-500 text-green-700' : 'border-green-200 text-green-600 hover:bg-green-50'}`}>
               {fixtureImage ? 'LOGO READY ✓' : 'SELECT & CROP LOGO'}
             </button>
-            <button type="submit" disabled={addFixture.isPending} className="w-full bg-green-800 text-white font-black p-4 rounded-2xl hover:bg-black transition shadow-lg shadow-green-100 disabled:opacity-50">
-              {addFixture.isPending ? '⏳ SAVING...' : 'SAVE FIXTURE'}
-            </button>
+            <button type="submit" disabled={addFixture.isPending} className="w-full bg-green-800 text-white font-black p-4 rounded-2xl hover:bg-black transition shadow-lg shadow-green-100 disabled:opacity-50">SAVE FIXTURE</button>
           </form>
         </div>
 
@@ -216,60 +243,29 @@ export default function AdminPage() {
       {/* --- DATA MANAGEMENT LISTS --- */}
       <div className="bg-gray-50 p-10 rounded-[50px] space-y-10 border border-gray-200 shadow-inner">
           <div className="flex items-center gap-4 border-b-2 border-gray-200 pb-6"><ListChecks size={40} className="text-gray-400"/><h2 className="text-4xl font-black uppercase tracking-tighter text-gray-800">Database Records</h2></div>
-          
-          <div className="grid lg:grid-cols-2 gap-12 text-sm">
-            {/* Achievements List */}
+          <div className="grid lg:grid-cols-3 gap-12 text-sm">
             <div className="space-y-4">
                 <h3 className="font-black text-orange-600 uppercase flex items-center gap-2 tracking-widest"><Trophy size={16}/> Achievements</h3>
                 <div className="bg-white rounded-[32px] shadow-sm overflow-hidden border border-gray-200 max-h-96 overflow-y-auto pr-1">
-                    <table className="w-full text-left">
-                        <tbody className="divide-y divide-gray-100 font-bold">
-                            {achievements?.map((a: any) => (
+                    <table className="w-full text-left"><tbody className="divide-y divide-gray-100 font-bold">{achievements?.map((a: any) => (
                                 <tr key={a._id} className="hover:bg-orange-50/50 transition"><td className="p-4 flex items-center gap-3"><span>{a.icon}</span><div><p className="text-gray-950">{a.title}</p><p className="text-[10px] text-gray-400">{a.year}</p></div></td><td className="p-4 text-right"><button onClick={() => deleteAchievement.mutate(a._id)} className="text-red-300 hover:text-red-600 p-2"><Trash2 size={18}/></button></td></tr>
-                            ))}
-                        </tbody>
-                    </table>
+                    ))}</tbody></table>
                 </div>
             </div>
-
-            {/* Members List */}
             <div className="space-y-4">
                 <h3 className="font-black text-blue-900 uppercase flex items-center gap-2 tracking-widest"><UserPlus size={16}/> Members</h3>
                 <div className="bg-white rounded-[32px] shadow-sm overflow-hidden border border-gray-200 max-h-96 overflow-y-auto pr-1">
-                    <table className="w-full text-left">
-                        <tbody className="divide-y divide-gray-100 font-bold text-gray-800">
-                            {players?.map((p: any) => (
-                                <tr key={p._id} className="hover:bg-blue-50/50 transition">
-                                  <td className="p-4 flex items-center gap-3">
-                                    <div className={`w-8 h-8 rounded-full flex items-center justify-center text-[10px] ${p.category === 'player' ? 'bg-blue-100 text-blue-600' : 'bg-pink-100 text-pink-600'}`}>
-                                      {p.category === 'player' ? (p.number || '0') : '♥'}
-                                    </div>
-                                    <div>
-                                      <p>{p.name} <span className={`text-[8px] px-1.5 py-0.5 rounded-full ml-1 ${p.category === 'player' ? 'bg-blue-100 text-blue-600' : 'bg-pink-100 text-pink-600'}`}>{p.category?.toUpperCase()}</span></p>
-                                      <p className="text-[10px] text-gray-400 uppercase">{p.position}</p>
-                                    </div>
-                                  </td>
-                                  <td className="p-4 text-right">
-                                    <button onClick={() => deletePlayer.mutate(p._id)} className="text-red-300 hover:text-red-600 p-2"><Trash2 size={18}/></button>
-                                  </td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                    <table className="w-full text-left"><tbody className="divide-y divide-gray-100 font-bold text-gray-800">{players?.map((p: any) => (
+                                <tr key={p._id} className="hover:bg-blue-50/50 transition"><td className="p-4 flex items-center gap-3"><div className={`w-8 h-8 rounded-full flex items-center justify-center text-[10px] ${p.category === 'player' ? 'bg-blue-100 text-blue-600' : 'bg-pink-100 text-pink-600'}`}>{p.category === 'player' ? (p.number || '0') : '♥'}</div><div><p>{p.name} <span className={`text-[8px] px-1.5 py-0.5 rounded-full ml-1 ${p.category === 'player' ? 'bg-blue-100 text-blue-600' : 'bg-pink-100 text-pink-600'}`}>{p.category?.toUpperCase()}</span></p><p className="text-[10px] text-gray-400 uppercase">{p.position}</p></div></td><td className="p-4 text-right"><button onClick={() => deletePlayer.mutate(p._id)} className="text-red-300 hover:text-red-600 p-2"><Trash2 size={18}/></button></td></tr>
+                    ))}</tbody></table>
                 </div>
             </div>
-
-            {/* Fixtures List */}
             <div className="space-y-4">
                 <h3 className="font-black text-green-700 uppercase flex items-center gap-2 tracking-widest"><Calendar size={16}/> Fixtures</h3>
                 <div className="bg-white rounded-[32px] shadow-sm overflow-hidden border border-gray-200 max-h-96 overflow-y-auto pr-1">
-                    <table className="w-full text-left">
-                        <tbody className="divide-y divide-gray-100 font-bold text-gray-800">
-                            {fixtures?.map((f: any) => (
-                                <tr key={f._id} className="hover:bg-green-50/50 transition"><td className="p-4"><div><p className="text-green-900">vs {f.name}</p><p className="text-[10px] text-gray-400">{new Date(f.date).toLocaleDateString()} @ {f.stadium}</p></div></td><td className="p-4 text-right"><button onClick={() => deleteFixture.mutate(f._id)} className="text-red-300 hover:text-red-600 p-2"><Trash2 size={18}/></button></td></tr>
-                            ))}
-                        </tbody>
-                    </table>
+                    <table className="w-full text-left"><tbody className="divide-y divide-gray-100 font-bold text-gray-800">{fixtures?.map((f: any) => (
+                                <tr key={f._id} className="hover:bg-green-50/50 transition"><td className="p-4"><div><p className="text-green-900">vs {f.name}</p><p className="text-[10px] text-gray-400">{new Date(f.date).toLocaleDateString()}</p></div></td><td className="p-4 text-right"><button onClick={() => deleteFixture.mutate(f._id)} className="text-red-300 hover:text-red-600 p-2"><Trash2 size={18}/></button></td></tr>
+                    ))}</tbody></table>
                 </div>
             </div>
           </div>
@@ -279,6 +275,7 @@ export default function AdminPage() {
       {showPlayerCropper && <ImageCropper aspect={1} onCropComplete={(file) => { setPlayerImage(file); setShowPlayerCropper(false); }} onCancel={() => setShowPlayerCropper(false)} />}
       {showFixtureCropper && <ImageCropper aspect={1} onCropComplete={(file) => { setFixtureImage(file); setShowFixtureCropper(false); }} onCancel={() => setShowFixtureCropper(false)} />}
       {showSliderCropper && <ImageCropper aspect={4/3} onCropComplete={handleSliderSubmit} onCancel={() => setShowSliderCropper(false)} />}
+      {showHeroCropper && <ImageCropper aspect={21/9} onCropComplete={handleHeroImageSubmit} onCancel={() => setShowHeroCropper(false)} />}
     </div>
   );
 }
