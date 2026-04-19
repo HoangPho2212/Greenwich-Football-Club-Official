@@ -54,7 +54,7 @@ mongoose.connect(MONGO_URI)
 // Get all players
 app.get('/api/players', async (req, res) => {
   try {
-    const players = await Player.find().sort({ createdAt: -1 });
+    const players = await Player.find().sort({ createdAt: 1 });
     res.json(players);
   } catch (error) {
     res.status(500).json({ error: 'Server error' });
@@ -117,6 +117,20 @@ app.delete('/api/players/:id', async (req, res) => {
     res.json({ message: 'Player deleted successfully' });
   } catch (error) {
     res.status(500).json({ error: 'Server error' });
+  }
+});
+
+// Update a player/member
+app.put('/api/players/:id', upload.single('image'), async (req, res) => {
+  try {
+    const updateData = { ...req.body };
+    if (req.file) {
+      updateData.profile_photo = `/uploads/${req.file.filename}`;
+    }
+    const player = await Player.findByIdAndUpdate(req.params.id, updateData, { new: true });
+    res.json(player);
+  } catch (error: any) {
+    res.status(400).json({ error: error.message });
   }
 });
 
